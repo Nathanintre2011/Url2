@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlight Key System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            width: 320px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #e0e0e0;
+        }
+
+        .timer {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 25px;
+        }
+
+        .btn-login {
+            background-color: #555;
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: not-allowed;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-login.active {
+            background-color: #2ecc71;
+            cursor: pointer;
+        }
+
+        .btn-login.active:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Starlight Key System Auth</h1>
+        <div class="timer" id="timer-text">5s Remaining for Key...</div>
+        
+        <!-- Ganti URL di bawah ini sesuai tujuan lu -->
+        <button class="btn-login" id="login-btn" onclick="window.location.href='https://url-tujuan-lu.com'" disabled>Login</button>
+    </div>
+
+    <script>
+        let timeLeft = 5;
+        const timerText = document.getElementById('timer-text');
+        const loginBtn = document.getElementById('login-btn');
+
+        const countdown = setInterval(() => {
+            timeLeft--;
+            
+            if (timeLeft > 0) {
+                timerText.innerText = `${timeLeft}s Remaining for Key...`;
+            } else {
+                clearInterval(countdown);
+                timerText.innerText = "Key is Ready!";
+                loginBtn.classList.add('active');
+                loginBtn.removeAttribute('disabled');
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
